@@ -59,60 +59,64 @@ const services: ServiceItem[] = [
 
 const ServiceSection = () => {
   return (
-    <div className="bg-brand-deep">
+    <div>
       {services.map((service, index) => (
-        <section key={service.id} id={service.id} className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid gap-10 lg:grid-cols-2"
-          >
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-danger">{service.tag}</p>
-              <h2 className="mt-3 text-3xl font-black text-brand-foreground sm:text-4xl">{service.title}</h2>
-              <p className="mt-4 max-w-xl text-brand-foreground/70">{service.description}</p>
+        <section
+          key={service.id}
+          id={service.id}
+          className={`py-16 ${index % 2 === 0 ? "bg-brand-deep" : "bg-brand"}`}
+        >
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="grid gap-10 lg:grid-cols-2"
+            >
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-danger">{service.tag}</p>
+                <h2 className="mt-3 text-3xl font-black text-brand-foreground sm:text-4xl">{service.title}</h2>
+                <p className="mt-4 max-w-xl text-brand-foreground/70">{service.description}</p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={getWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-danger px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Converse conosco
-                </a>
-                {service.showProcessLink && (
+                <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="#processo"
-                    className="rounded-full border border-brand-foreground/30 px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/10"
+                    href={getWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-danger px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
                   >
-                    Conheça melhor o serviço
+                    <MessageCircle className="h-4 w-4" />
+                    Converse conosco
                   </a>
-                )}
+                  {service.showProcessLink && (
+                    <a
+                      href="#processo"
+                      className="rounded-full border border-brand-foreground/30 px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/10"
+                    >
+                      Conheça melhor o serviço
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div>
-              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-brand-foreground/80">
-                Principais situações que atendemos:
-              </p>
-              <div className="space-y-3">
-                {service.points.map((point) => (
-                  <div
-                    key={point}
-                    className="flex items-center gap-3 rounded-xl border border-brand-foreground/15 bg-brand-foreground/5 px-4 py-3"
-                  >
-                    <service.icon className="h-5 w-5 flex-shrink-0 text-brand-foreground/70" />
-                    <span className="text-sm text-brand-foreground/90">{point}</span>
-                  </div>
-                ))}
+              <div>
+                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-brand-foreground/80">
+                  Principais situações que atendemos:
+                </p>
+                <div className="space-y-3">
+                  {service.points.map((point) => (
+                    <div
+                      key={point}
+                      className="flex items-center gap-3 rounded-xl border border-brand-foreground/15 bg-brand-foreground/5 px-4 py-3"
+                    >
+                      <service.icon className="h-5 w-5 flex-shrink-0 text-brand-foreground/70" />
+                      <span className="text-sm text-brand-foreground/90">{point}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-
-          {index < services.length - 1 && <div className="mt-14 border-t border-brand-foreground/15" />}
+            </motion.div>
+          </div>
         </section>
       ))}
     </div>
