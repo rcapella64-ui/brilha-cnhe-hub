@@ -64,7 +64,8 @@ const ServiceSection = () => {
         <section
           key={service.id}
           id={service.id}
-          className={`relative py-16 ${index % 2 === 0 ? "bg-brand-deep" : "bg-brand"}`}
+          className={`relative py-16 ${index === 1 ? "" : index % 2 === 0 ? "bg-brand-deep" : "bg-brand"}`}
+          style={index === 1 ? { background: "linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 92%) 100%)" } : undefined}
         >
           {index > 0 && (
             <div
@@ -83,15 +84,15 @@ const ServiceSection = () => {
             >
               <div>
                 <p className="text-xs font-bold uppercase tracking-wide text-danger">{service.tag}</p>
-                <h2 className="mt-3 text-3xl font-black text-brand-foreground sm:text-4xl">{service.title}</h2>
-                <p className="mt-4 max-w-xl text-brand-foreground/70">{service.description}</p>
+                <h2 className={`mt-3 text-3xl font-black sm:text-4xl ${index === 1 ? "text-brand" : "text-brand-foreground"}`}>{service.title}</h2>
+                <p className={`mt-4 max-w-xl ${index === 1 ? "text-muted-foreground" : "text-brand-foreground/70"}`}>{service.description}</p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
                     href={getWhatsAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-danger px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
+                    className={`inline-flex items-center gap-2 rounded-full bg-danger px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-90 ${index === 1 ? "text-white" : "text-brand-foreground"}`}
                   >
                     <MessageCircle className="h-4 w-4" />
                     Converse conosco
@@ -99,7 +100,7 @@ const ServiceSection = () => {
                   {service.showProcessLink && (
                     <a
                       href="#processo"
-                      className="rounded-full border border-brand-foreground/30 px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/10"
+                      className={`rounded-full border px-5 py-3 text-sm font-semibold transition-colors ${index === 1 ? "border-brand/30 text-brand hover:bg-brand/10" : "border-brand-foreground/30 text-brand-foreground hover:bg-brand-foreground/10"}`}
                     >
                       Conheça melhor o serviço
                     </a>
@@ -108,17 +109,17 @@ const ServiceSection = () => {
               </div>
 
               <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-brand-foreground/80">
+                <p className={`mb-4 text-sm font-bold uppercase tracking-wide ${index === 1 ? "text-brand/80" : "text-brand-foreground/80"}`}>
                   Principais situações que atendemos:
                 </p>
                 <div className="space-y-3">
                   {service.points.map((point) => (
                     <div
                       key={point}
-                      className="flex items-center gap-3 rounded-xl border border-brand-foreground/15 bg-brand-foreground/5 px-4 py-3"
+                      className={`flex items-center gap-3 rounded-xl border px-4 py-3 ${index === 1 ? "border-border bg-surface" : "border-brand-foreground/15 bg-brand-foreground/5"}`}
                     >
-                      <service.icon className="h-5 w-5 flex-shrink-0 text-brand-foreground/70" />
-                      <span className="text-sm text-brand-foreground/90">{point}</span>
+                      <service.icon className={`h-5 w-5 flex-shrink-0 ${index === 1 ? "text-brand/70" : "text-brand-foreground/70"}`} />
+                      <span className={`text-sm ${index === 1 ? "text-foreground/90" : "text-brand-foreground/90"}`}>{point}</span>
                     </div>
                   ))}
                 </div>
