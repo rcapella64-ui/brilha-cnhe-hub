@@ -42,7 +42,7 @@ const AnimatedNumber = ({ target, suffix = "", decimals = 0 }: AnimatedNumberPro
   }, [inView, target]);
 
   return (
-    <span ref={ref} className="text-5xl font-black text-brand sm:text-6xl">
+    <span ref={ref} className="text-4xl font-black text-brand sm:text-5xl lg:text-6xl">
       {decimals ? value.toFixed(decimals) : Math.round(value)}
       {suffix}
     </span>
