@@ -64,8 +64,16 @@ const ServiceSection = () => {
         <section
           key={service.id}
           id={service.id}
-          className={`py-16 ${index % 2 === 0 ? "bg-brand-deep" : "bg-brand"}`}
+          className={`relative py-16 ${index % 2 === 0 ? "bg-brand-deep" : "bg-brand"}`}
         >
+          {index > 0 && (
+            <div
+              className="pointer-events-none absolute inset-x-0 -top-px h-px"
+              style={{
+                background: "linear-gradient(90deg, transparent 10%, hsl(var(--brand-foreground) / 0.12) 50%, transparent 90%)",
+              }}
+            />
+          )}
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
