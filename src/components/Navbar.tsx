@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/contact";
-
+import logo from "@/assets/logo-so-multas.png";
 const links = [
   { label: "SERVIÇOS", href: "#servicos" },
   { label: "SOBRE", href: "#processo" },
@@ -15,14 +15,8 @@ const Navbar = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-md">
       <div className="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-1.5" aria-label="SÓ Multas">
-          <span className="text-2xl font-black leading-none text-brand">
-            SÓ
-          </span>
-          <div className="leading-none">
-            <p className="text-[11px] font-bold text-brand">A sua ajuda</p>
-            <p className="text-[11px] font-bold text-brand">especializada</p>
-          </div>
+        <a href="#" aria-label="SÓ Multas">
+          <img src={logo} alt="SÓ Multas - A sua ajuda especializada" className="h-9" />
         </a>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Principal">
