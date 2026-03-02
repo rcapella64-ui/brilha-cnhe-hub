@@ -1,74 +1,79 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
+import { getWhatsAppLink } from "@/lib/contact";
+
+const links = [
+  { label: "SERVIÇOS", href: "#servicos" },
+  { label: "SOBRE", href: "#processo" },
+  { label: "RESULTADOS", href: "#resultados" },
+  { label: "CONTATO", href: "#contato" },
+];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const links = [
-    { label: "SERVIÇOS", href: "#servicos" },
-    { label: "SOBRE", href: "#processo" },
-    { label: "RESULTADOS", href: "#resultados" },
-    { label: "CONTATO", href: "#contato" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-2">
-            <span className="text-2xl font-black text-navy">SÓ</span>
-            <div className="flex flex-col leading-none">
-              <span className="text-xs font-bold text-navy">MULTAS</span>
-              <span className="text-[10px] text-muted-foreground">A sua ajuda especializada</span>
-            </div>
-          </a>
-
-          <div className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-semibold text-foreground/70 hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-md">
+      <div className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#" className="flex items-center gap-3" aria-label="SÓ Multas">
+          <div className="grid h-10 w-10 place-items-center rounded-full border-2 border-danger text-sm font-black text-brand">
+            SÓ
           </div>
+          <div className="leading-none">
+            <p className="text-base font-extrabold text-brand">MULTAS</p>
+            <p className="text-xs text-muted-foreground">A sua ajuda especializada</p>
+          </div>
+        </a>
 
-          <a
-            href="https://wa.me/+5561992212024/?text=ola!%20acessei%20o%20site%20da%20SOMULTAS%20Lago%20Sul%20e%20tenho%20interesse%20em%20saber%20mais."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-navy text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
-          >
-            <Phone className="w-4 h-4" />
-            Área do Cliente
-          </a>
-
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div className="md:hidden bg-background border-t border-border py-4 px-4 space-y-3">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="block text-sm font-semibold text-foreground/70 py-2"
-              onClick={() => setIsOpen(false)}
+              className="text-sm font-semibold text-foreground/75 transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
+        </nav>
+
+        <a
+          href={getWhatsAppLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90 md:inline-flex"
+        >
+          <Phone className="h-4 w-4" />
+          Área do Cliente
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          className="grid h-10 w-10 place-items-center rounded-full border border-border md:hidden"
+          aria-label="Abrir menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-border bg-surface px-5 py-4 md:hidden">
+          <nav className="space-y-3">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block text-sm font-semibold text-foreground/80"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 

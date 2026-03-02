@@ -1,87 +1,92 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ChevronRight, AlertTriangle, Car, ShieldOff, Gauge, Bike, Ban, ParkingCircle, TrafficCone, Siren } from "lucide-react";
+import { CheckCircle2, MessageCircle } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { getWhatsAppLink } from "@/lib/contact";
 
-const WA_LINK = "https://wa.me/+5561992212024/?text=ola!%20acessei%20o%20site%20da%20SOMULTAS%20Lago%20Sul%20e%20tenho%20interesse%20em%20saber%20mais.";
+type ServiceItem = {
+  id: string;
+  tag: string;
+  title: string;
+  description: string;
+  points: string[];
+  showProcessLink?: boolean;
+  icon: LucideIcon;
+};
 
-const services = [
+const services: ServiceItem[] = [
   {
     id: "lei-seca",
     tag: "Recurso para Lei Seca (Bafômetro)",
     title: "Recurso para Lei Seca (Bafômetro)",
-    description: "Feito para quem precisa de ajuda especializada porque foi parado na blitz do bafômetro.",
-    situations: [
-      { icon: Siren, text: "Foi abordado em uma blitz e soprou o bafômetro" },
-      { icon: AlertTriangle, text: "Foi abordado em uma blitz de balada segura ou Lei Seca" },
-      { icon: Ban, text: "Foi abordado e se recusou a soprar o bafômetro" },
-      { icon: Car, text: "Sofreu um acidente de carro e soprou o bafômetro ou realizou exame de sangue" },
+    description:
+      "Feito para quem precisa de ajuda especializada porque foi parado na blitz do bafômetro.",
+    points: [
+      "Foi abordado em uma blitz e soprou o bafômetro",
+      "Foi abordado em uma blitz de balada segura ou Lei Seca",
+      "Foi abordado e se recusou a soprar o bafômetro",
+      "Sofreu um acidente de carro e soprou o bafômetro ou realizou exame de sangue",
     ],
-    showSecondButton: true,
+    showProcessLink: true,
+    icon: CheckCircle2,
   },
   {
     id: "nao-perder-cnh",
     tag: "Não quero perder minha CNH",
     title: "Não quero perder minha CNH",
     description: "Feito para quem precisa de auxílio para não perder a habilitação.",
-    situations: [
-      { icon: Gauge, text: "Transitar em velocidade em mais de 50% do que o permitido" },
-      { icon: ShieldOff, text: "Dirigir com a carteira suspensa" },
-      { icon: Bike, text: "Dirigir sem capacete" },
-      { icon: AlertTriangle, text: "Manobra perigosa" },
+    points: [
+      "Transitar em velocidade em mais de 50% do que o permitido",
+      "Dirigir com a carteira suspensa",
+      "Dirigir sem capacete",
+      "Manobra perigosa",
     ],
-    showSecondButton: false,
+    icon: CheckCircle2,
   },
   {
     id: "recurso-multa",
     tag: "Recurso contra multa de trânsito",
     title: "Recurso contra multa de trânsito",
     description: "Feito para quem não concorda com uma multa de trânsito.",
-    situations: [
-      { icon: Gauge, text: "Transitar em velocidade em até 20% do permitido" },
-      { icon: ParkingCircle, text: "Estacionar em local proibido" },
-      { icon: TrafficCone, text: "Avanço de sinal" },
-      { icon: Car, text: "Cinto de segurança" },
+    points: [
+      "Transitar em velocidade em até 20% do permitido",
+      "Estacionar em local proibido",
+      "Avanço de sinal",
+      "Cinto de segurança",
     ],
-    showSecondButton: false,
+    icon: CheckCircle2,
   },
 ];
 
 const ServiceSection = () => {
   return (
-    <div className="bg-navy-dark">
+    <div className="bg-danger-gradient">
       {services.map((service, index) => (
-        <section
-          key={service.id}
-          id={service.id}
-          className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-        >
+        <section key={service.id} id={service.id} className="container px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-12 items-start"
+            className="grid gap-10 lg:grid-cols-2"
           >
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-red-accent">
-                {service.tag}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-primary-foreground mt-3 mb-4">
-                {service.title}
-              </h2>
-              <p className="text-primary-foreground/60 mb-6">{service.description}</p>
-              <div className="flex flex-wrap gap-3">
+              <p className="text-xs font-bold uppercase tracking-wide text-danger-foreground/80">{service.tag}</p>
+              <h2 className="mt-3 text-3xl font-black text-danger-foreground sm:text-4xl">{service.title}</h2>
+              <p className="mt-4 max-w-xl text-danger-foreground/80">{service.description}</p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={WA_LINK}
+                  href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-red-accent text-primary-foreground px-5 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="h-4 w-4" />
                   Converse conosco
                 </a>
-                {service.showSecondButton && (
+                {service.showProcessLink && (
                   <a
                     href="#processo"
-                    className="inline-flex items-center gap-2 border border-primary-foreground/20 text-primary-foreground px-5 py-3 rounded-full text-sm font-semibold hover:bg-white/5 transition-colors"
+                    className="rounded-full border border-danger-foreground/35 px-5 py-3 text-sm font-semibold text-danger-foreground transition-colors hover:bg-danger-foreground/10"
                   >
                     Conheça melhor o serviço
                   </a>
@@ -90,27 +95,24 @@ const ServiceSection = () => {
             </div>
 
             <div>
-              <h4 className="text-sm font-bold text-primary-foreground/70 mb-4 uppercase tracking-wider">
+              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-danger-foreground/85">
                 Principais situações que atendemos:
-              </h4>
+              </p>
               <div className="space-y-3">
-                {service.situations.map((sit, i) => (
+                {service.points.map((point) => (
                   <div
-                    key={i}
-                    className="flex items-center gap-4 bg-white/5 rounded-xl p-4"
+                    key={point}
+                    className="flex items-center gap-3 rounded-xl border border-danger-foreground/20 bg-danger-foreground/10 px-4 py-3"
                   >
-                    <sit.icon className="w-5 h-5 text-red-accent flex-shrink-0" />
-                    <span className="text-sm text-primary-foreground/80">{sit.text}</span>
-                    <ChevronRight className="w-4 h-4 text-primary-foreground/30 ml-auto flex-shrink-0" />
+                    <service.icon className="h-5 w-5 flex-shrink-0 text-danger-foreground" />
+                    <span className="text-sm text-danger-foreground">{point}</span>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {index < services.length - 1 && (
-            <div className="border-t border-white/10 mt-16" />
-          )}
+          {index < services.length - 1 && <div className="mt-14 border-t border-danger-foreground/20" />}
         </section>
       ))}
     </div>

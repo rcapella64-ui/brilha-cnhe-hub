@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,42 +7,59 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 50% 10%;
+    --foreground: 218 27% 22%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 50% 10%;
+    --card-foreground: 218 27% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 10%;
+    --popover-foreground: 218 27% 22%;
 
-    --primary: 215 70% 15%;
+    --primary: 217 68% 20%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 30% 96%;
-    --secondary-foreground: 215 50% 10%;
+    --secondary: 210 27% 95%;
+    --secondary-foreground: 218 27% 22%;
 
-    --muted: 210 30% 96%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 210 25% 94%;
+    --muted-foreground: 217 12% 46%;
 
-    --accent: 0 75% 50%;
+    --accent: 359 76% 47%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 215 70% 15%;
+    --border: 214 22% 87%;
+    --input: 214 22% 87%;
+    --ring: 217 68% 20%;
 
     --radius: 0.75rem;
 
-    --navy: 215 70% 15%;
-    --navy-light: 215 50% 20%;
-    --navy-dark: 215 80% 10%;
-    --red: 0 75% 50%;
-    --red-light: 0 75% 55%;
-    --surface-light: 210 40% 97%;
-    --surface-warm: 15 30% 96%;
+    --brand: 217 68% 20%;
+    --brand-foreground: 0 0% 100%;
+    --brand-soft: 217 42% 30%;
+    --brand-deep: 218 75% 14%;
+
+    --hero: 204 20% 92%;
+    --hero-foreground: 218 27% 22%;
+
+    --danger: 359 76% 47%;
+    --danger-foreground: 0 0% 100%;
+    --danger-soft: 0 65% 95%;
+    --danger-deep: 0 74% 42%;
+
+    --success: 151 56% 42%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 151 46% 93%;
+
+    --warning: 45 92% 52%;
+
+    --wa: 142 70% 45%;
+    --wa-foreground: 0 0% 100%;
+
+    --surface: 0 0% 100%;
+    --surface-alt: 210 25% 95%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -53,66 +70,55 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  .dark {
+    --background: 218 75% 14%;
+    --foreground: 210 40% 98%;
+    --card: 218 75% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 218 75% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 218 75% 14%;
+    --secondary: 217 32% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 20%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 359 76% 47%;
+    --accent-foreground: 0 0% 100%;
+    --border: 217 30% 26%;
+    --input: 217 30% 26%;
+    --ring: 212 27% 84%;
   }
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+  * {
+    @apply border-border;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", sans-serif;
+  }
 }
 
 @layer utilities {
-  .text-gradient-red {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0, 75%, 50%), hsl(15, 80%, 55%));
+  .bg-hero-gradient {
+    background: linear-gradient(180deg, hsl(var(--hero)) 0%, hsl(var(--background)) 100%);
   }
 
-  .bg-navy {
-    background-color: hsl(215, 70%, 15%);
+  .bg-danger-gradient {
+    background: linear-gradient(180deg, hsl(var(--danger)) 0%, hsl(var(--danger-deep)) 100%);
   }
 
-  .bg-navy-light {
-    background-color: hsl(215, 50%, 20%);
+  .shadow-soft {
+    box-shadow: 0 20px 60px -30px hsl(var(--brand) / 0.4);
   }
 
-  .bg-navy-dark {
-    background-color: hsl(215, 80%, 10%);
-  }
-
-  .bg-surface-light {
-    background-color: hsl(210, 40%, 97%);
-  }
-
-  .bg-surface-warm {
-    background-color: hsl(15, 30%, 96%);
-  }
-
-  .text-navy {
-    color: hsl(215, 70%, 15%);
-  }
-
-  .text-red-accent {
-    color: hsl(0, 75%, 50%);
-  }
-
-  .border-red-accent {
-    border-color: hsl(0, 75%, 50%);
-  }
-
-  .bg-red-accent {
-    background-color: hsl(0, 75%, 50%);
-  }
-
-  .bg-red-accent-hover:hover {
-    background-color: hsl(0, 75%, 45%);
+  .shadow-card {
+    box-shadow: 0 14px 34px -20px hsl(var(--brand-deep) / 0.3);
   }
 }
