@@ -246,6 +246,20 @@ foreach ($services as $i => $s):
   <div class="container">
     <h2 class="process-title">A SÓ Multas vai muito além de recursos. Cuidamos do seu caso em todas as etapas, de forma individualizada.</h2>
 
+    <?php
+    $steps = [
+      ["Atendimento inicial", "Atendimento personalizado à situação do cliente"],
+      ["Análise da solução", "Entender qual a melhor solução"],
+      ["Criar doc de defesa", "Aplicar estratégias de acordo com o seu caso"],
+      ["Apresentar a defesa", "Protocolar no órgão de trânsito"],
+      ["Acompanhar a defesa", "Acompanhar o resultado e situação do cliente"],
+      ["Finalização", "Pós venda e orientação"],
+    ];
+    $checkIcon = '<span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>';
+    $xIcon = '<span class="icon-x"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
+    ?>
+
+    <!-- Desktop table -->
     <div class="process-table-wrapper">
       <table class="process-table">
         <thead>
@@ -256,19 +270,7 @@ foreach ($services as $i => $s):
           </tr>
         </thead>
         <tbody>
-          <?php
-          $steps = [
-            ["Atendimento inicial", "Atendimento personalizado à situação do cliente"],
-            ["Análise da solução", "Entender qual a melhor solução"],
-            ["Criar doc de defesa", "Aplicar estratégias de acordo com o seu caso"],
-            ["Apresentar a defesa", "Protocolar no órgão de trânsito"],
-            ["Acompanhar a defesa", "Acompanhar o resultado e situação do cliente"],
-            ["Finalização", "Pós venda e orientação"],
-          ];
-          $checkIcon = '<span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>';
-          $xIcon = '<span class="icon-x"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
-          foreach ($steps as $j => $step):
-          ?>
+          <?php foreach ($steps as $j => $step): ?>
           <tr>
             <td><strong><?= $step[0] ?></strong><small><?= $step[1] ?></small></td>
             <td><?= $checkIcon ?></td>
@@ -277,6 +279,29 @@ foreach ($services as $i => $s):
           <?php endforeach; ?>
         </tbody>
       </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="process-mobile-cards">
+      <div class="process-mobile-header">
+        <span>Etapas</span>
+        <div class="process-mobile-cols">
+          <span>SÓ Multas</span>
+          <span>Outras</span>
+        </div>
+      </div>
+      <?php foreach ($steps as $j => $step): ?>
+      <div class="process-mobile-card">
+        <div class="process-card-info">
+          <strong><?= $step[0] ?></strong>
+          <small><?= $step[1] ?></small>
+        </div>
+        <div class="process-card-icons">
+          <?= $checkIcon ?>
+          <?= $j < 3 ? $checkIcon : $xIcon ?>
+        </div>
+      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>

@@ -237,7 +237,7 @@ input {
 }
 
 .hero h1 {
-  font-size: 2.6rem;
+  font-size: 2rem;
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -756,7 +756,7 @@ input {
 
 .process-title {
   text-align: center;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: var(--brand);
   max-width: 56rem;
@@ -765,21 +765,34 @@ input {
 
 @media (min-width: 640px) {
   .process-title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-title {
     font-size: 2.25rem;
   }
 }
 
+/* Desktop table */
 .process-table-wrapper {
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: 1rem;
   background: var(--surface);
   box-shadow: var(--shadow-card);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .process-table-wrapper {
+    display: block;
+  }
 }
 
 .process-table {
   width: 100%;
-  min-width: 700px;
   text-align: left;
   border-collapse: collapse;
 }
@@ -852,6 +865,88 @@ input {
   color: var(--danger);
 }
 
+/* Mobile cards for process */
+.process-mobile-cards {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .process-mobile-cards {
+    display: none;
+  }
+}
+
+.process-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: hsla(210, 27%, 95%, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.process-mobile-header span {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}
+
+.process-mobile-header span:nth-child(2) {
+  color: var(--brand);
+}
+
+.process-mobile-header .process-mobile-cols {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.process-mobile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.process-mobile-card .process-card-info {
+  flex: 1;
+  padding-right: 0.75rem;
+}
+
+.process-mobile-card .process-card-info strong {
+  display: block;
+  font-size: 14px;
+  color: var(--brand);
+}
+
+.process-mobile-card .process-card-info small {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.process-mobile-card .process-card-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.process-mobile-card .icon-check,
+.process-mobile-card .icon-x {
+  width: 28px;
+  height: 28px;
+}
+
+.process-mobile-card .icon-check svg,
+.process-mobile-card .icon-x svg {
+  width: 14px;
+  height: 14px;
+}
+
 /* ── Results ── */
 .results-section {
   background: var(--surface-alt);
@@ -911,12 +1006,18 @@ input {
 }
 
 .result-card .number {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 900;
   color: var(--brand);
 }
 
 @media (min-width: 640px) {
+  .result-card .number {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
   .result-card .number {
     font-size: 3.75rem;
   }
