@@ -85,11 +85,17 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative"
         >
-          <div className="overflow-hidden rounded-[1.8rem] border border-border bg-surface p-2 shadow-soft">
+          {/* Decorative pink accent behind image */}
+          <div
+            className="absolute -right-4 top-8 h-[90%] w-[60%] rounded-[2rem]"
+            style={{ background: "hsl(0 60% 90%)" }}
+          />
+
+          <div className="relative overflow-hidden rounded-[1.4rem] shadow-soft">
             <img
               src={heroImg}
               alt="Equipe da SÓ Multas atendendo cliente"
-              className="w-full rounded-[1.3rem] object-cover"
+              className="w-full object-cover"
             />
           </div>
 
