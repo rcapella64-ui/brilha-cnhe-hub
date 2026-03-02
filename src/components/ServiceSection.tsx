@@ -61,7 +61,7 @@ const ServiceSection = () => {
   return (
     <div className="bg-danger-gradient">
       {services.map((service, index) => (
-        <section key={service.id} id={service.id} className="container px-4 py-16 sm:px-6 lg:px-8">
+        <section key={service.id} id={service.id} className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
