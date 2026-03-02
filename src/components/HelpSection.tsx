@@ -18,7 +18,7 @@ const options = [
 
 const HelpSection = () => {
   return (
-    <section id="servicos" className="container relative z-10 -mb-12 px-4 pb-6 sm:px-6 lg:px-8">
+    <section id="servicos" className="mx-auto -mb-12 max-w-7xl px-6 pb-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -59,7 +59,7 @@ const stats = [
 const ResultsSection = () => {
   return (
     <section id="resultados" className="bg-surface-alt py-20">
-      <div className="container px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

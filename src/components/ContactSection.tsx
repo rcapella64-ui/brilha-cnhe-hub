@@ -14,7 +14,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="container px-4 py-20 sm:px-6 lg:px-8">
+    <section id="contato" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
       <div className="grid gap-10 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

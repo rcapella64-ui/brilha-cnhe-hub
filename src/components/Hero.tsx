@@ -5,7 +5,7 @@ import { getWhatsAppLink } from "@/lib/contact";
 
 const Hero = () => {
   return (
-    <section className="container px-4 pb-14 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+    <section className="mx-auto max-w-7xl px-6 pb-14 pt-24 lg:px-8 lg:pt-28">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -19,23 +19,23 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 className="mb-6 text-4xl font-black leading-[1.06] text-brand sm:text-5xl lg:text-7xl">
+          <h1 className="mb-5 text-[2.6rem] font-black leading-[1.08] tracking-tight text-brand sm:text-[3.2rem] lg:text-[3.8rem]">
             Oferecemos ajuda especializada para multas de{" "}
-            <span className="text-danger underline decoration-danger decoration-[5px] underline-offset-8">
+            <span className="text-danger underline decoration-danger decoration-[4px] underline-offset-[6px]">
               bafômetro
             </span>
           </h1>
 
-          <p className="mb-8 max-w-xl text-lg text-muted-foreground">
+          <p className="mb-7 max-w-md text-base text-muted-foreground">
             A SÓ Multas é especialista em proteção do direito de dirigir no Brasil.
           </p>
 
-          <div className="mb-10 flex flex-wrap gap-4">
+          <div className="mb-8 flex flex-wrap gap-3">
             <a
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-card transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[13px] font-semibold text-brand-foreground shadow-card transition-opacity hover:opacity-90"
             >
               <MessageCircle className="h-4 w-4" />
               Fale com um especialista
@@ -43,7 +43,7 @@ const Hero = () => {
             </a>
             <a
               href="#processo"
-              className="inline-flex items-center rounded-full border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-brand transition-colors hover:bg-secondary"
+              className="inline-flex items-center rounded-full border border-border bg-surface px-5 py-3 text-[13px] font-semibold text-brand transition-colors hover:bg-secondary"
             >
               Conheça nosso processo
             </a>

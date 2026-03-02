@@ -14,23 +14,23 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-md">
-      <div className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-3" aria-label="SÓ Multas">
-          <div className="grid h-10 w-10 place-items-center rounded-full border-2 border-danger text-sm font-black text-brand">
+      <div className="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-6 lg:px-8">
+        <a href="#" className="flex items-center gap-1.5" aria-label="SÓ Multas">
+          <span className="text-2xl font-black leading-none text-brand">
             SÓ
-          </div>
+          </span>
           <div className="leading-none">
-            <p className="text-base font-extrabold text-brand">MULTAS</p>
-            <p className="text-xs text-muted-foreground">A sua ajuda especializada</p>
+            <p className="text-[11px] font-bold text-brand">A sua ajuda</p>
+            <p className="text-[11px] font-bold text-brand">especializada</p>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Principal">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-semibold text-foreground/75 transition-colors hover:text-foreground"
+              className="text-[13px] font-semibold text-foreground/70 transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
@@ -41,16 +41,16 @@ const Navbar = () => {
           href={getWhatsAppLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90 md:inline-flex"
+          className="hidden items-center gap-2 rounded-full bg-brand px-5 py-2 text-[13px] font-semibold text-brand-foreground transition-opacity hover:opacity-90 md:inline-flex"
         >
-          <Phone className="h-4 w-4" />
+          <Phone className="h-3.5 w-3.5" />
           Área do Cliente
         </a>
 
         <button
           type="button"
-          onClick={() => setOpen((value) => !value)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-border md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          className="grid h-9 w-9 place-items-center rounded-full border border-border md:hidden"
           aria-label="Abrir menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
