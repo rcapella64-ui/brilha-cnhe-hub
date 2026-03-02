@@ -59,7 +59,7 @@ const services: ServiceItem[] = [
 
 const ServiceSection = () => {
   return (
-    <div className="bg-danger-gradient">
+    <div className="bg-brand-deep">
       {services.map((service, index) => (
         <section key={service.id} id={service.id} className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <motion.div
@@ -69,16 +69,16 @@ const ServiceSection = () => {
             className="grid gap-10 lg:grid-cols-2"
           >
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-danger-foreground/80">{service.tag}</p>
-              <h2 className="mt-3 text-3xl font-black text-danger-foreground sm:text-4xl">{service.title}</h2>
-              <p className="mt-4 max-w-xl text-danger-foreground/80">{service.description}</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-danger">{service.tag}</p>
+              <h2 className="mt-3 text-3xl font-black text-brand-foreground sm:text-4xl">{service.title}</h2>
+              <p className="mt-4 max-w-xl text-brand-foreground/70">{service.description}</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-full bg-danger px-5 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Converse conosco
@@ -86,7 +86,7 @@ const ServiceSection = () => {
                 {service.showProcessLink && (
                   <a
                     href="#processo"
-                    className="rounded-full border border-danger-foreground/35 px-5 py-3 text-sm font-semibold text-danger-foreground transition-colors hover:bg-danger-foreground/10"
+                    className="rounded-full border border-brand-foreground/30 px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/10"
                   >
                     Conheça melhor o serviço
                   </a>
@@ -95,24 +95,24 @@ const ServiceSection = () => {
             </div>
 
             <div>
-              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-danger-foreground/85">
+              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-brand-foreground/80">
                 Principais situações que atendemos:
               </p>
               <div className="space-y-3">
                 {service.points.map((point) => (
                   <div
                     key={point}
-                    className="flex items-center gap-3 rounded-xl border border-danger-foreground/20 bg-danger-foreground/10 px-4 py-3"
+                    className="flex items-center gap-3 rounded-xl border border-brand-foreground/15 bg-brand-foreground/5 px-4 py-3"
                   >
-                    <service.icon className="h-5 w-5 flex-shrink-0 text-danger-foreground" />
-                    <span className="text-sm text-danger-foreground">{point}</span>
+                    <service.icon className="h-5 w-5 flex-shrink-0 text-brand-foreground/70" />
+                    <span className="text-sm text-brand-foreground/90">{point}</span>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {index < services.length - 1 && <div className="mt-14 border-t border-danger-foreground/20" />}
+          {index < services.length - 1 && <div className="mt-14 border-t border-brand-foreground/15" />}
         </section>
       ))}
     </div>
