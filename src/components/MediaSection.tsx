@@ -1,40 +1,39 @@
 import { motion } from "framer-motion";
+import logoBand from "@/assets/logo-band.png";
+import logoCorreio from "@/assets/logo-correio.png";
 import logoG1 from "@/assets/logo-g1.png";
 import logoMetropoles from "@/assets/logo-metropoles.png";
-import logoCorreio from "@/assets/logo-correio.png";
 import logoR7 from "@/assets/logo-r7.png";
-import logoBand from "@/assets/logo-band.png";
 
 const logos = [
-  { src: logoG1, alt: "G1" },
-  { src: logoMetropoles, alt: "Metrópoles" },
-  { src: logoCorreio, alt: "Correio Braziliense" },
-  { src: logoR7, alt: "R7" },
-  { src: logoBand, alt: "Band" },
+  { src: logoG1, alt: "Logo G1" },
+  { src: logoMetropoles, alt: "Logo Metrópoles" },
+  { src: logoCorreio, alt: "Logo Correio Braziliense" },
+  { src: logoR7, alt: "Logo R7" },
+  { src: logoBand, alt: "Logo Band" },
 ];
 
 const MediaSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-surface-light">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-surface-alt py-14">
+      <div className="container px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="mb-8 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-wider text-red-accent">
-            Presença na mídia
-          </span>
+          <p className="text-xs font-bold uppercase tracking-wide text-danger">Presença na mídia</p>
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-10 opacity-60">
-          {logos.map((logo, i) => (
+        <div className="flex flex-wrap items-center justify-center gap-10 opacity-70">
+          {logos.map((logo) => (
             <img
-              key={i}
+              key={logo.alt}
               src={logo.src}
               alt={logo.alt}
-              className="h-8 sm:h-10 object-contain grayscale hover:grayscale-0 transition-all"
+              loading="lazy"
+              className="h-8 object-contain grayscale transition-all hover:grayscale-0 sm:h-10"
             />
           ))}
         </div>

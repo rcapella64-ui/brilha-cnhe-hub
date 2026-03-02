@@ -1,102 +1,104 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Shield, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, Shield, Star } from "lucide-react";
 import heroImg from "@/assets/hero-atendimento.png";
+import { getWhatsAppLink } from "@/lib/contact";
 
 const Hero = () => {
   return (
-    <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="container px-4 pb-14 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <div className="grid items-center gap-12 lg:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 bg-surface-light rounded-full px-4 py-2 mb-8">
-            <Shield className="w-4 h-4 text-red-accent" />
-            <span className="text-xs font-semibold tracking-wide uppercase text-foreground/70">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-brand/25 bg-surface px-4 py-2">
+            <Shield className="h-4 w-4 text-brand" />
+            <span className="text-xs font-bold uppercase tracking-wide text-brand">
               Especialistas em defesa de trânsito
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-navy leading-[1.1] mb-6">
+          <h1 className="mb-6 text-4xl font-black leading-[1.06] text-brand sm:text-5xl lg:text-7xl">
             Oferecemos ajuda especializada para multas de{" "}
-            <span className="text-red-accent underline decoration-red-accent decoration-4 underline-offset-8">
+            <span className="text-danger underline decoration-danger decoration-[5px] underline-offset-8">
               bafômetro
             </span>
           </h1>
 
-          <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+          <p className="mb-8 max-w-xl text-lg text-muted-foreground">
             A SÓ Multas é especialista em proteção do direito de dirigir no Brasil.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-10">
+          <div className="mb-10 flex flex-wrap gap-4">
             <a
-              href="https://wa.me/+5561992212024/?text=ola!%20acessei%20o%20site%20da%20SOMULTAS%20Lago%20Sul%20e%20tenho%20interesse%20em%20saber%20mais."
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-navy text-primary-foreground px-6 py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-brand-foreground shadow-card transition-opacity hover:opacity-90"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="h-4 w-4" />
               Fale com um especialista
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#processo"
-              className="inline-flex items-center gap-2 border-2 border-border text-foreground px-6 py-3.5 rounded-full text-sm font-semibold hover:bg-muted transition-colors"
+              className="inline-flex items-center rounded-full border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-brand transition-colors hover:bg-secondary"
             >
               Conheça nosso processo
             </a>
           </div>
 
-          <div className="flex items-center gap-6 pt-6 border-t border-border">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-6 border-t border-border pt-6">
+            <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
-                {["C", "M", "R"].map((letter, i) => (
+                {["C", "M", "R"].map((letter) => (
                   <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-navy text-primary-foreground flex items-center justify-center text-xs font-bold border-2 border-background"
+                    key={letter}
+                    className="grid h-8 w-8 place-items-center rounded-full border-2 border-surface bg-brand text-xs font-bold text-brand-foreground"
                   >
                     {letter}
                   </div>
                 ))}
               </div>
               <div>
-                <p className="text-sm font-bold text-navy">+80 mil</p>
+                <p className="text-sm font-bold text-brand">+80 mil</p>
                 <p className="text-xs text-muted-foreground">clientes atendidos</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-4 w-4 fill-warning text-warning" />
                 ))}
               </div>
-              <span className="text-sm font-bold text-navy">8.3</span>
-              <span className="text-xs text-muted-foreground">Reclame Aqui</span>
+              <p className="text-sm font-bold text-brand">8.3</p>
+              <p className="text-xs text-muted-foreground">Reclame Aqui</p>
             </div>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative hidden lg:block"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative"
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <div className="overflow-hidden rounded-[1.8rem] border border-border bg-surface p-2 shadow-soft">
             <img
               src={heroImg}
-              alt="Atendimento Só Multas"
-              className="w-full h-auto object-cover"
+              alt="Equipe da SÓ Multas atendendo cliente"
+              className="w-full rounded-[1.3rem] object-cover"
             />
           </div>
-          <div className="absolute bottom-6 left-6 bg-background rounded-xl shadow-lg p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+
+          <div className="absolute -bottom-4 left-4 flex items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-3 shadow-card sm:left-8">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-success-soft">
+              <CheckCircle2 className="h-5 w-5 text-success" />
             </div>
             <div>
-              <p className="text-sm font-bold text-navy">94% de sucesso</p>
+              <p className="text-sm font-bold text-brand">94% de sucesso</p>
               <p className="text-xs text-muted-foreground">Taxa comprovada desde 2015</p>
             </div>
           </div>

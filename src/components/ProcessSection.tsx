@@ -12,53 +12,53 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section id="processo" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="processo" className="container px-4 py-20 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12"
+        className="mx-auto mb-12 max-w-4xl text-center"
       >
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-navy max-w-3xl mx-auto">
+        <h2 className="text-3xl font-black text-brand sm:text-4xl">
           A SÓ Multas vai muito além de recursos. Cuidamos do seu caso em todas as etapas, de forma individualizada.
         </h2>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 26 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="overflow-x-auto"
+        className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-card"
       >
-        <table className="w-full min-w-[600px]">
+        <table className="w-full min-w-[700px] text-left">
           <thead>
-            <tr className="border-b-2 border-border">
-              <th className="text-left py-4 px-4 text-sm font-semibold text-muted-foreground">Etapas</th>
-              <th className="text-center py-4 px-4 text-sm font-bold text-navy">SÓ Multas</th>
-              <th className="text-center py-4 px-4 text-sm font-semibold text-muted-foreground">Outras empresas</th>
+            <tr className="border-b border-border bg-secondary/60">
+              <th className="px-5 py-4 text-xs font-bold uppercase tracking-wide text-muted-foreground">Etapas</th>
+              <th className="px-5 py-4 text-center text-xs font-bold uppercase tracking-wide text-brand">SÓ Multas</th>
+              <th className="px-5 py-4 text-center text-xs font-bold uppercase tracking-wide text-muted-foreground">Outras empresas</th>
             </tr>
           </thead>
           <tbody>
-            {steps.map((step, i) => (
-              <tr key={i} className="border-b border-border">
-                <td className="py-4 px-4">
-                  <p className="text-sm font-semibold text-navy">{step.label}</p>
+            {steps.map((step, index) => (
+              <tr key={step.label} className="border-b border-border last:border-b-0">
+                <td className="px-5 py-4">
+                  <p className="text-sm font-bold text-brand">{step.label}</p>
                   <p className="text-xs text-muted-foreground">{step.desc}</p>
                 </td>
-                <td className="text-center py-4 px-4">
-                  <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
+                <td className="px-5 py-4 text-center">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-success-soft text-success">
+                    <Check className="h-4 w-4" />
+                  </span>
                 </td>
-                <td className="text-center py-4 px-4">
-                  {i < 3 ? (
-                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100">
-                      <Check className="w-4 h-4 text-green-600" />
-                    </div>
+                <td className="px-5 py-4 text-center">
+                  {index < 3 ? (
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-success-soft text-success">
+                      <Check className="h-4 w-4" />
+                    </span>
                   ) : (
-                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-red-100">
-                      <X className="w-4 h-4 text-red-accent" />
-                    </div>
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-danger-soft text-danger">
+                      <X className="h-4 w-4" />
+                    </span>
                   )}
                 </td>
               </tr>
