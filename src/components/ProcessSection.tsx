@@ -19,18 +19,19 @@ const ProcessSection = () => {
         viewport={{ once: true }}
         className="mx-auto mb-12 max-w-4xl text-center"
       >
-        <h2 className="text-3xl font-black text-brand sm:text-4xl">
+        <h2 className="text-2xl font-black text-brand sm:text-3xl lg:text-4xl">
           A SÓ Multas vai muito além de recursos. Cuidamos do seu caso em todas as etapas, de forma individualizada.
         </h2>
       </motion.div>
 
+      {/* Desktop table */}
       <motion.div
         initial={{ opacity: 0, y: 26 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-card"
+        className="hidden rounded-2xl border border-border bg-surface shadow-card sm:block"
       >
-        <table className="w-full min-w-[700px] text-left">
+        <table className="w-full text-left">
           <thead>
             <tr className="border-b border-border bg-secondary/60">
               <th className="px-5 py-4 text-xs font-bold uppercase tracking-wide text-muted-foreground">Etapas</th>
@@ -65,6 +66,47 @@ const ProcessSection = () => {
             ))}
           </tbody>
         </table>
+      </motion.div>
+
+      {/* Mobile cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 26 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="space-y-3 sm:hidden"
+      >
+        <div className="mb-4 flex items-center justify-between rounded-xl bg-secondary/60 px-4 py-3">
+          <span className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Etapas</span>
+          <div className="flex gap-6">
+            <span className="text-xs font-bold uppercase tracking-wide text-brand">SÓ Multas</span>
+            <span className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Outras</span>
+          </div>
+        </div>
+        {steps.map((step, index) => (
+          <div
+            key={step.label}
+            className="flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-3"
+          >
+            <div className="flex-1 pr-3">
+              <p className="text-sm font-bold text-brand">{step.label}</p>
+              <p className="text-xs text-muted-foreground">{step.desc}</p>
+            </div>
+            <div className="flex gap-6">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-success-soft text-success">
+                <Check className="h-3.5 w-3.5" />
+              </span>
+              {index < 3 ? (
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-success-soft text-success">
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+              ) : (
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-danger-soft text-danger">
+                  <X className="h-3.5 w-3.5" />
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
       </motion.div>
     </section>
   );

@@ -19,7 +19,7 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 className="mb-5 text-[2.6rem] font-black leading-[1.08] tracking-tight text-brand sm:text-[3.2rem] lg:text-[3.8rem]">
+          <h1 className="mb-5 text-[2rem] font-black leading-[1.08] tracking-tight text-brand sm:text-[3.2rem] lg:text-[3.8rem]">
             Oferecemos ajuda especializada para multas de{" "}
             <span className="text-danger underline decoration-danger decoration-[4px] underline-offset-[6px]">
               bafômetro
