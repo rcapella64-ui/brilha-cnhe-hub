@@ -92,6 +92,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateCarousel();
 
+  // Autoplay every 5 seconds
+  var autoplayInterval = setInterval(function () {
+    currentIndex = currentIndex >= maxIndex() ? 0 : currentIndex + 1;
+    updateCarousel();
+  }, 5000);
+
+  // Pause on hover
+  if (track) {
+    track.parentElement.addEventListener("mouseenter", function () {
+      clearInterval(autoplayInterval);
+    });
+    track.parentElement.addEventListener("mouseleave", function () {
+      autoplayInterval = setInterval(function () {
+        currentIndex = currentIndex >= maxIndex() ? 0 : currentIndex + 1;
+        updateCarousel();
+      }, 5000);
+    });
+  }
+
   // ── Animated numbers (Intersection Observer) ──
   var numberEls = document.querySelectorAll("[data-target]");
 
