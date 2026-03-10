@@ -2,37 +2,8 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-
-import blogMultaImg from "@/assets/blog-multa.jpg";
-import blogCnhImg from "@/assets/blog-cnh.jpg";
-import blogTransitoImg from "@/assets/blog-transito.jpg";
-
-const posts = [
-  {
-    image: blogMultaImg,
-    date: "05 Mar 2026",
-    category: "Multas",
-    title: "Como recorrer de uma multa de trânsito: guia completo 2026",
-    excerpt:
-      "Entenda o passo a passo para contestar uma multa, os prazos legais e quais argumentos técnicos podem ser utilizados a seu favor.",
-  },
-  {
-    image: blogCnhImg,
-    date: "28 Fev 2026",
-    category: "CNH",
-    title: "Suspensão da CNH: o que fazer para não perder sua habilitação",
-    excerpt:
-      "Saiba quais são os seus direitos quando a pontuação atinge o limite e como a defesa administrativa pode evitar a suspensão.",
-  },
-  {
-    image: blogTransitoImg,
-    date: "15 Fev 2026",
-    category: "Legislação",
-    title: "Novas regras de trânsito em 2026: o que mudou no CTB",
-    excerpt:
-      "As últimas alterações no Código de Trânsito Brasileiro e como elas impactam motoristas em todo o país.",
-  },
-];
+import { Link } from "react-router-dom";
+import { blogPosts } from "@/lib/blogData";
 
 const BlogSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -105,38 +76,40 @@ const BlogSection = () => {
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="-ml-4 flex">
-            {posts.map((post) => (
+            {blogPosts.map((post) => (
               <div
-                key={post.title}
+                key={post.slug}
                 className="min-w-0 flex-[0_0_100%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
               >
-                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <span className="absolute left-3 top-3 rounded-full bg-danger px-3 py-1 text-[11px] font-bold uppercase text-white">
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="mb-2 text-xs text-muted-foreground">
-                      {post.date}
-                    </p>
-                    <h3 className="mb-2 text-lg font-bold leading-snug text-brand group-hover:text-danger transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="mb-4 flex-1 text-sm leading-relaxed text-foreground/75">
-                      {post.excerpt}
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-danger transition-colors group-hover:text-brand cursor-pointer">
-                      Ler mais <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </article>
+                <Link to={`/blog/${post.slug}`} className="block h-full">
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <span className="absolute left-3 top-3 rounded-full bg-danger px-3 py-1 text-[11px] font-bold uppercase text-white">
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      <p className="mb-2 text-xs text-muted-foreground">
+                        {post.date}
+                      </p>
+                      <h3 className="mb-2 text-lg font-bold leading-snug text-brand group-hover:text-danger transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="mb-4 flex-1 text-sm leading-relaxed text-foreground/75">
+                        {post.excerpt}
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-danger transition-colors group-hover:text-brand">
+                        Ler mais <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               </div>
             ))}
           </div>
@@ -144,7 +117,7 @@ const BlogSection = () => {
 
         {/* Dots */}
         <div className="mt-8 flex justify-center gap-2">
-          {posts.map((_, i) => (
+          {blogPosts.map((_, i) => (
             <button
               key={i}
               onClick={() => emblaApi?.scrollTo(i)}
