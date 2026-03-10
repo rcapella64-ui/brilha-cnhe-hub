@@ -111,6 +111,77 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ── Blog Carousel ──
+  var blogTrack = document.getElementById("blog-track");
+  var blogCards = blogTrack ? blogTrack.querySelectorAll(".blog-card") : [];
+  var blogPrevBtn = document.getElementById("blog-prev");
+  var blogNextBtn = document.getElementById("blog-next");
+  var blogDotsContainer = document.getElementById("blog-dots");
+  var blogIndex = 0;
+
+  function getBlogVisible() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 640) return 2;
+    return 1;
+  }
+
+  function blogMaxIndex() {
+    return Math.max(0, blogCards.length - getBlogVisible());
+  }
+
+  function updateBlogCarousel() {
+    if (!blogTrack || blogCards.length === 0) return;
+    var visible = getBlogVisible();
+    var gap = 16;
+    var cardWidth = (blogTrack.parentElement.offsetWidth - gap * (visible - 1)) / visible;
+    blogCards.forEach(function (card) { card.style.minWidth = cardWidth + "px"; });
+    var offset = blogIndex * (cardWidth + gap);
+    blogTrack.style.transform = "translateX(-" + offset + "px)";
+    blogTrack.style.transition = "transform 0.4s ease";
+    if (blogDotsContainer) {
+      blogDotsContainer.querySelectorAll(".carousel-dot").forEach(function (dot, i) {
+        dot.classList.toggle("active", i === blogIndex);
+      });
+    }
+  }
+
+  if (blogPrevBtn) blogPrevBtn.addEventListener("click", function () {
+    blogIndex = blogIndex <= 0 ? blogMaxIndex() : blogIndex - 1;
+    updateBlogCarousel();
+  });
+  if (blogNextBtn) blogNextBtn.addEventListener("click", function () {
+    blogIndex = blogIndex >= blogMaxIndex() ? 0 : blogIndex + 1;
+    updateBlogCarousel();
+  });
+  if (blogDotsContainer) blogDotsContainer.addEventListener("click", function (e) {
+    if (e.target.classList.contains("carousel-dot")) {
+      blogIndex = parseInt(e.target.dataset.index, 10);
+      updateBlogCarousel();
+    }
+  });
+
+  var blogAutoplay = setInterval(function () {
+    blogIndex = blogIndex >= blogMaxIndex() ? 0 : blogIndex + 1;
+    updateBlogCarousel();
+  }, 5000);
+
+  if (blogTrack) {
+    blogTrack.parentElement.addEventListener("mouseenter", function () { clearInterval(blogAutoplay); });
+    blogTrack.parentElement.addEventListener("mouseleave", function () {
+      blogAutoplay = setInterval(function () {
+        blogIndex = blogIndex >= blogMaxIndex() ? 0 : blogIndex + 1;
+        updateBlogCarousel();
+      }, 5000);
+    });
+  }
+
+  window.addEventListener("resize", function () {
+    if (blogIndex > blogMaxIndex()) blogIndex = blogMaxIndex();
+    updateBlogCarousel();
+  });
+
+  updateBlogCarousel();
+
   // ── Animated numbers (Intersection Observer) ──
   var numberEls = document.querySelectorAll("[data-target]");
 
