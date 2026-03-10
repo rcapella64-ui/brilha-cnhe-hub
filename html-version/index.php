@@ -30,6 +30,7 @@
       <a href="#servicos">SERVIÇOS</a>
       <a href="#processo">SOBRE</a>
       <a href="#resultados">RESULTADOS</a>
+      <a href="#blog">BLOG</a>
       <a href="#contato">CONTATO</a>
     </nav>
 
