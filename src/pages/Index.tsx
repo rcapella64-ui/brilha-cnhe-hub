@@ -9,6 +9,7 @@ import ProcessSection from "@/components/ProcessSection";
 import ResultsSection from "@/components/ResultsSection";
 import ServiceSection from "@/components/ServiceSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import BlogSection from "@/components/BlogSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
