@@ -30,6 +30,7 @@
       <a href="#servicos">SERVIÇOS</a>
       <a href="#processo">SOBRE</a>
       <a href="#resultados">RESULTADOS</a>
+      <a href="#blog">BLOG</a>
       <a href="#contato">CONTATO</a>
     </nav>
 
@@ -47,6 +48,7 @@
     <a href="#servicos">SERVIÇOS</a>
     <a href="#processo">SOBRE</a>
     <a href="#resultados">RESULTADOS</a>
+    <a href="#blog">BLOG</a>
     <a href="#contato">CONTATO</a>
   </div>
 </header>
@@ -395,6 +397,79 @@ foreach ($services as $i => $s):
       <img src="assets/logo-correio.png" alt="Logo Correio Braziliense" loading="lazy" />
       <img src="assets/logo-r7.png" alt="Logo R7" loading="lazy" />
       <img src="assets/logo-band.png" alt="Logo Band" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ══ Blog ══ -->
+<section id="blog" class="blog-section">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <p class="label">Blog</p>
+        <h2>Conteúdos que ajudam você</h2>
+      </div>
+      <div class="carousel-nav">
+        <button id="blog-prev" class="carousel-btn" aria-label="Post anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button id="blog-next" class="carousel-btn" aria-label="Próximo post">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="overflow:hidden">
+      <div id="blog-track" class="blog-track">
+        <?php
+        $blog_posts = [
+          [
+            "img" => "assets/hero-atendimento.png",
+            "category" => "Multas",
+            "date" => "05 Mar 2026",
+            "title" => "Como recorrer de uma multa de trânsito: guia completo 2026",
+            "excerpt" => "Entenda o passo a passo para contestar uma multa, os prazos legais e quais argumentos técnicos podem ser utilizados a seu favor.",
+          ],
+          [
+            "img" => "assets/hero-atendimento.png",
+            "category" => "CNH",
+            "date" => "28 Fev 2026",
+            "title" => "Suspensão da CNH: o que fazer para não perder sua habilitação",
+            "excerpt" => "Saiba quais são os seus direitos quando a pontuação atinge o limite e como a defesa administrativa pode evitar a suspensão.",
+          ],
+          [
+            "img" => "assets/hero-atendimento.png",
+            "category" => "Legislação",
+            "date" => "15 Fev 2026",
+            "title" => "Novas regras de trânsito em 2026: o que mudou no CTB",
+            "excerpt" => "As últimas alterações no Código de Trânsito Brasileiro e como elas impactam motoristas em todo o país.",
+          ],
+        ];
+        foreach ($blog_posts as $post):
+        ?>
+        <article class="blog-card">
+          <div class="blog-card-image">
+            <img src="<?= $post['img'] ?>" alt="<?= $post['title'] ?>" loading="lazy" />
+            <span class="blog-category"><?= $post['category'] ?></span>
+          </div>
+          <div class="blog-card-body">
+            <p class="blog-date"><?= $post['date'] ?></p>
+            <h3><?= $post['title'] ?></h3>
+            <p class="blog-excerpt"><?= $post['excerpt'] ?></p>
+            <span class="blog-read-more">
+              Ler mais
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <div id="blog-dots" class="carousel-dots">
+      <?php for ($i = 0; $i < count($blog_posts); $i++): ?>
+      <button class="carousel-dot<?= $i === 0 ? ' active' : '' ?>" data-index="<?= $i ?>" aria-label="Post <?= $i + 1 ?>"></button>
+      <?php endfor; ?>
     </div>
   </div>
 </section>
