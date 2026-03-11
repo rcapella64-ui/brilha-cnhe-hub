@@ -424,21 +424,21 @@ foreach ($services as $i => $s):
         <?php
         $blog_posts = [
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-multa.jpg",
             "category" => "Multas",
             "date" => "05 Mar 2026",
             "title" => "Como recorrer de uma multa de trânsito: guia completo 2026",
             "excerpt" => "Entenda o passo a passo para contestar uma multa, os prazos legais e quais argumentos técnicos podem ser utilizados a seu favor.",
           ],
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-cnh.jpg",
             "category" => "CNH",
             "date" => "28 Fev 2026",
             "title" => "Suspensão da CNH: o que fazer para não perder sua habilitação",
             "excerpt" => "Saiba quais são os seus direitos quando a pontuação atinge o limite e como a defesa administrativa pode evitar a suspensão.",
           ],
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-transito.jpg",
             "category" => "Legislação",
             "date" => "15 Fev 2026",
             "title" => "Novas regras de trânsito em 2026: o que mudou no CTB",
