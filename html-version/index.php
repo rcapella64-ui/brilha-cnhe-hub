@@ -431,7 +431,7 @@ foreach ($services as $i => $s):
             "excerpt" => "Entenda o passo a passo para contestar uma multa, os prazos legais e quais argumentos técnicos podem ser utilizados a seu favor.",
           ],
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-cnh.jpg",
             "category" => "CNH",
             "date" => "28 Fev 2026",
             "title" => "Suspensão da CNH: o que fazer para não perder sua habilitação",
