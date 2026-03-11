@@ -424,7 +424,7 @@ foreach ($services as $i => $s):
         <?php
         $blog_posts = [
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-multa.jpg",
             "category" => "Multas",
             "date" => "05 Mar 2026",
             "title" => "Como recorrer de uma multa de trânsito: guia completo 2026",
