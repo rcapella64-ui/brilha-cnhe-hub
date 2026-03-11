@@ -438,7 +438,7 @@ foreach ($services as $i => $s):
             "excerpt" => "Saiba quais são os seus direitos quando a pontuação atinge o limite e como a defesa administrativa pode evitar a suspensão.",
           ],
           [
-            "img" => "assets/hero-atendimento.png",
+            "img" => "assets/blog-transito.jpg",
             "category" => "Legislação",
             "date" => "15 Fev 2026",
             "title" => "Novas regras de trânsito em 2026: o que mudou no CTB",
